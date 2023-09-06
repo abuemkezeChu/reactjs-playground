@@ -148,3 +148,6 @@ book
 
 const { title, author, genres, hasMovieAdaptation, pages, publicationDate, translations } = book
 console.log(title, author)
+
+const [primaryGenre, secondaryGenre] = genres
+console.log(primaryGenre, secondaryGenre)
