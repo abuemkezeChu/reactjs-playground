@@ -142,3 +142,9 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+
+const book = getBook(2)
+book
+
+const { title, author, genres, hasMovieAdaptation, pages, publicationDate, translations } = book
+console.log(title, author)
