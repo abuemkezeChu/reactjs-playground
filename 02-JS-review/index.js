@@ -1,23 +1,23 @@
 const data = [
   {
     id: 1,
-    title: "The Lord of the Rings",
-    publicationDate: "1954-07-29",
-    author: "J. R. R. Tolkien",
+    title: 'The Lord of the Rings',
+    publicationDate: '1954-07-29',
+    author: 'J. R. R. Tolkien',
     genres: [
-      "fantasy",
-      "high-fantasy",
-      "adventure",
-      "fiction",
-      "novels",
-      "literature",
+      'fantasy',
+      'high-fantasy',
+      'adventure',
+      'fiction',
+      'novels',
+      'literature',
     ],
     hasMovieAdaptation: true,
     pages: 1216,
     translations: {
-      spanish: "El señor de los anillos",
-      chinese: "魔戒",
-      french: "Le Seigneur des anneaux",
+      spanish: 'El señor de los anillos',
+      chinese: '魔戒',
+      french: 'Le Seigneur des anneaux',
     },
     reviews: {
       goodreads: {
@@ -34,15 +34,15 @@ const data = [
   },
   {
     id: 2,
-    title: "The Cyberiad",
-    publicationDate: "1965-01-01",
-    author: "Stanislaw Lem",
+    title: 'The Cyberiad',
+    publicationDate: '1965-01-01',
+    author: 'Stanislaw Lem',
     genres: [
-      "science fiction",
-      "humor",
-      "speculative fiction",
-      "short stories",
-      "fantasy",
+      'science fiction',
+      'humor',
+      'speculative fiction',
+      'short stories',
+      'fantasy',
     ],
     hasMovieAdaptation: false,
     pages: 295,
@@ -62,14 +62,14 @@ const data = [
   },
   {
     id: 3,
-    title: "Dune",
-    publicationDate: "1965-01-01",
-    author: "Frank Herbert",
-    genres: ["science fiction", "novel", "adventure"],
+    title: 'Dune',
+    publicationDate: '1965-01-01',
+    author: 'Frank Herbert',
+    genres: ['science fiction', 'novel', 'adventure'],
     hasMovieAdaptation: true,
     pages: 658,
     translations: {
-      spanish: "",
+      spanish: '',
     },
     reviews: {
       goodreads: {
@@ -82,16 +82,16 @@ const data = [
   {
     id: 4,
     title: "Harry Potter and the Philosopher's Stone",
-    publicationDate: "1997-06-26",
-    author: "J. K. Rowling",
-    genres: ["fantasy", "adventure"],
+    publicationDate: '1997-06-26',
+    author: 'J. K. Rowling',
+    genres: ['fantasy', 'adventure'],
     hasMovieAdaptation: true,
     pages: 223,
     translations: {
-      spanish: "Harry Potter y la piedra filosofal",
-      korean: "해리 포터와 마법사의 돌",
-      bengali: "হ্যারি পটার এন্ড দ্য ফিলোসফার্স স্টোন",
-      portuguese: "Harry Potter e a Pedra Filosofal",
+      spanish: 'Harry Potter y la piedra filosofal',
+      korean: '해리 포터와 마법사의 돌',
+      bengali: 'হ্যারি পটার এন্ড দ্য ফিলোসফার্স স্টোন',
+      portuguese: 'Harry Potter e a Pedra Filosofal',
     },
     reviews: {
       goodreads: {
@@ -108,17 +108,17 @@ const data = [
   },
   {
     id: 5,
-    title: "A Game of Thrones",
-    publicationDate: "1996-08-01",
-    author: "George R. R. Martin",
-    genres: ["fantasy", "high-fantasy", "novel", "fantasy fiction"],
+    title: 'A Game of Thrones',
+    publicationDate: '1996-08-01',
+    author: 'George R. R. Martin',
+    genres: ['fantasy', 'high-fantasy', 'novel', 'fantasy fiction'],
     hasMovieAdaptation: true,
     pages: 835,
     translations: {
-      korean: "왕좌의 게임",
-      polish: "Gra o tron",
-      portuguese: "A Guerra dos Tronos",
-      spanish: "Juego de tronos",
+      korean: '왕좌의 게임',
+      polish: 'Gra o tron',
+      portuguese: 'A Guerra dos Tronos',
+      spanish: 'Juego de tronos',
     },
     reviews: {
       goodreads: {
@@ -140,10 +140,14 @@ function getBooks() {
 }
 
 function getBook(id) {
-  return data.find((d) => d.id === id);
+  return data.find(d => d.id === id);
 }
 
-const book = getBook(1)
+// Destructuring
+
+/*
+const book = getBook(3)
+book
 console.log({ ...book, newValue: 'Hello', pages: 1300 })
 
 const { title, author, genres, hasMovieAdaptation, pages, publicationDate, translations } = book
@@ -154,3 +158,75 @@ console.log(primaryGenre, secondaryGenre)
 
 const newGenre = ['romance', ...genres]
 newGenre
+
+const pageRange = pages > 1000 ? 'more than a thousand' : 'less than a thousand'
+console.log(`The book has ${pageRange} pages`)
+console.log(true && 'Some text')
+console.log(false && 'Some text')
+console.log(true || 'Some value')
+console.log(false || 'Some value')
+
+console.log(book.translations.spanish || 'NOT TRANSLATED')
+
+function getTotalReviewsCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0
+  const totalReviews = goodreads + librarything
+  return totalReviews
+}
+
+console.log(getTotalReviewsCount(book))
+*/
+
+// Array methods
+
+// map()
+function getTotalReviewsCount(book) {
+  const goodreads = book.reviews?.goodreads?.reviewsCount;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+  const totalReviews = goodreads + librarything;
+  return totalReviews;
+}
+
+const books = getBooks();
+
+const arr = [1, 2, 3, 4, 5];
+const mapped = arr.map(element => element / 2);
+console.log(mapped);
+console.log(arr);
+
+const titles = books.map(book => book.title);
+console.log(titles);
+
+const essentialData = books.map(book => ({
+  title: book.title,
+  author: book.author,
+  reviewsCount: getTotalReviewsCount(book),
+}));
+essentialData;
+
+// filter()
+const {
+  title,
+  author,
+  genres,
+  hasMovieAdaptation,
+  pages,
+  publicationDate,
+  translations,
+} = books;
+const longBooks = books
+  .filter(book => book.pages > 500)
+  .filter(book => book.hasMovieAdaptation);
+longBooks;
+const adventureBooks = books
+  .filter(book => book.genres.includes('adventure'))
+  .map(book => book.title);
+adventureBooks;
+
+// reduce()
+const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
+
+// sort()
+const sortByPages = books.slice().sort((a, b) => b.pages - a.pages)
+sortByPages
