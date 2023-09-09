@@ -1,4 +1,4 @@
-import { React } from 'react'
+import { React, StrictMode } from 'react'
 import ReactDOM from 'react-dom'
 import './index.css'
 
@@ -51,4 +51,8 @@ function Skill(props) {
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(<App />)
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+)
