@@ -34,18 +34,18 @@ function AboutMe() {
 function SkillList() {
   return (
     <div className="skill-list">
-      <Skill skill="HTML" />
-      <Skill skill="CSS" />
-      <Skill skill="JavaScript" />
+      <Skill skill="HTML+CSS" color="red" />
+      <Skill skill="JavaScript" color="orange" />
+      <Skill skill="Git and Github" color="darkblue" />
+      <Skill skill="React" color="blue" />
     </div>
   )
 }
 
 function Skill(props) {
-  const style = { backgroundColor: 'red' }
   return (
-    <div className="skill">
-      <div style={style}>{props.skill}</div>
+    <div className="skill" style={{ backgroundColor: props.color }}>
+      <span>{props.skill}</span>
     </div>
   )
 }
