@@ -8,6 +8,7 @@ function App() {
       <Avatar />
       <div className="data">
         <AboutMe />
+        <SkillList />
       </div>
     </div>
   )
@@ -26,6 +27,25 @@ function AboutMe() {
         preparing a course, I like to play board games, to cook (and eat), or to
         just enjoy the Portuguese sun at the beach.
       </p>
+    </div>
+  )
+}
+
+function SkillList() {
+  return (
+    <div className="skill-list">
+      <Skill skill="HTML" />
+      <Skill skill="CSS" />
+      <Skill skill="JavaScript" />
+    </div>
+  )
+}
+
+function Skill(props) {
+  const style = { backgroundColor: 'red' }
+  return (
+    <div className="skill">
+      <div style={style}>{props.skill}</div>
     </div>
   )
 }
