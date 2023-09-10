@@ -120,13 +120,24 @@ function Pizza(props) {
   )
 }
 
+function Order(props) {
+  return (
+    <div className="order">
+      <p>
+        we're open until {props.closeHour}:00. Come visit us or order online
+      </p>
+      <button className="btn">Order</button>
+    </div>
+  )
+}
+
 function Footer() {
   const hour = new Date().getHours()
   const openHour = 8
-  const closedHour = 22
-  const isOpen = hour >= openHour && hour <= closedHour
+  const closeHour = 22
+  const isOpen = hour >= openHour && hour <= closeHour
 
-  // if (hour >= openHour && hour < closedHour) {
+  // if (hour >= openHour && hour < closeHour) {
   //   alert('We are currently open')
   // } else {
   //   alert('Sorry we are closed')
@@ -137,7 +148,7 @@ function Footer() {
   if (!isOpen) {
     return (
       <p>
-        we're are happy to welcome you between {openHour}:00 and {closedHour}
+        we're are happy to welcome you between {openHour}:00 and {closeHour}
         :00{' '}
       </p>
     )
@@ -146,13 +157,10 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpen ? (
-        <div className="order">
-          <p>we're open until {closedHour}:00. Come visit us or order online</p>
-          <button className="btn">Order</button>
-        </div>
+        <Order closeHour={closeHour} />
       ) : (
         <p>
-          we're are happy to welcome you between {openHour}:00 and {closedHour}
+          we're are happy to welcome you between {openHour}:00 and {closeHour}
           :00{' '}
         </p>
       )}
