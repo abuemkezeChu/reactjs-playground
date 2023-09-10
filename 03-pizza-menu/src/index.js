@@ -103,6 +103,11 @@ function Menu() {
 
 function Pizza(props) {
   console.log(props)
+
+  if (props.pizzaObject.soldOut) {
+    return null
+  }
+
   return (
     <li className="pizza">
       <img src={props.pizzaObject.photoName} alt="spinage pizza"></img>
@@ -126,6 +131,17 @@ function Footer() {
   // } else {
   //   alert('Sorry we are closed')
   // }
+
+  /**Multiple return is used in cases where we want to return entire components not just a piece of jsx */
+
+  if (!isOpen) {
+    return (
+      <p>
+        we're are happy to welcome you between {openHour}:00 and {closedHour}
+        :00{' '}
+      </p>
+    )
+  }
 
   return (
     <footer className="footer">
