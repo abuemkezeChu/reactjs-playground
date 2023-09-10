@@ -69,17 +69,20 @@ function Header() {
 
 function Menu() {
   const pizzas = pizzaData
+  // const pizzas = []
   const numPizzas = pizzas.length
   return (
     <main className="menu">
       <h2>Our menu</h2>
 
-      {numPizzas > 0 && (
+      {numPizzas > 0 ? (
         <ul className="pizzas">
           {pizzas.map(pizza => (
             <Pizza pizzaObject={pizza} key={pizza.name} />
           ))}
         </ul>
+      ) : (
+        <p>we're working on our menu, please come back later😊</p>
       )}
 
       {/* <Pizza
@@ -126,11 +129,16 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
           <p>we're open until {closedHour}:00. Come visit us or order online</p>
           <button className="btn">Order</button>
         </div>
+      ) : (
+        <p>
+          we're are happy to welcome you between {openHour}:00 and {closedHour}
+          :00{' '}
+        </p>
       )}
     </footer>
   )
