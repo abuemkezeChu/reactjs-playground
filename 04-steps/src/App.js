@@ -11,17 +11,20 @@ function App() {
   // const [user, setUser] = useState({ name: 'Chu' })
 
   const handlePrevious = () => {
-    if (step > 1) setStep(step - 1)
+    if (step > 1) setStep(step => step - 1)
   }
 
   const handleNext = () => {
-    if (step < 3) setStep(step + 1)
+    if (step < 3) {
+      setStep(step => step + 1)
+      // setStep(step => step + 1)
+    }
     // setUser({ name: 'Corine' })
   }
 
   return (
     <>
-      <button className="close" onClick={() => setIsOpen(!isOpen)}>
+      <button className="close" onClick={() => setIsOpen(isOpen => !isOpen)}>
         &times;
       </button>
       {isOpen && (
