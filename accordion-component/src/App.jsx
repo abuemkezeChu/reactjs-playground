@@ -18,7 +18,7 @@ const faqs = [
 
 export default function App() {
   return (
-    <div>
+    <div className="accordion">
       <h1 style={{ textAlign: 'center' }}>Frequently Asked Questions</h1>
       <Accordion data={faqs} />
     </div>
